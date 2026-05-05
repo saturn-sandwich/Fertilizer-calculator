@@ -45,24 +45,23 @@ def fit_all_curves(_raw_data):
 params = fit_all_curves(raw_data)
 
 # ── 2. HEADER ────────────────────────────────────────────────────────────────
-st.markdown("<h1 style='color: #2E7D32;'>Simulator de Răspuns al Producției la Azot</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: #2E7D32;'>Simulator de răspuns al producției de masă verde la fertilzant</h1>", unsafe_allow_html=True)
 st.markdown("""
-Acest instrument utilizează **Ecuația Mitscherlich** pentru a modela producția de masă verde în funcție de aportul de azot.
+<p style='font-size: 24px;'>Acest instrument utilizează <b>Ecuația Mitscherlich</b> pentru a modela producția de masă verde în funcție de aportul de azot.
 Alegeți varianta de fertilizare din stânga și ajustați parametrii pentru a vedea rezultatele.
----
-""")
+""", unsafe_allow_html=True)
 
 # ── 3. INPUTS (SIDEBAR) ──────────────────────────────────────────────────────
 with st.sidebar:
-    st.header("⚙️ Setări Experiment")
+    st.header("⚙️ Setări experiment")
     fertilization_type = st.selectbox(
         "Tip fertilizare",
         ["N mineral", "N organo-mineral", "N organic"]
     )
-    amended = st.toggle("Aplicare Amendamente", value=False)
+    amended = st.toggle("Aplicare amendamente", value=False)
     
     st.divider()
-    st.header("📊 Parametri de Calcul")
+    st.header("📊 Parametri de calcul")
     n_input = st.slider("Cantitate N aplicată (kg/ha)", 0, 170, 30)
 
 # Computing variables
@@ -75,7 +74,7 @@ y_dot = y_control + A * (1 - np.exp(-b * n_input))
 col1, col2 = st.columns([1, 2], gap="large")
 
 with col1:
-    st.subheader("📌 Rezultate Estimări")
+    st.subheader("📌 Rezultate estimări")
     
     # Using a container for a grouped look
     with st.container(border=True):
@@ -84,7 +83,7 @@ with col1:
 
     st.write("---")
     
-    st.subheader("🎯 Calcul Invers")
+    st.subheader("🎯 Calcul invers")
     y_target = st.number_input("Introdu producția dorită (t/ha)", min_value=0.0, value=12.0, step=0.5)
     
     if y_target <= y_control:
@@ -115,7 +114,7 @@ with col2:
     
     # Labels and Titles
     ax.set_title(f"Răspunsul pentru {fertilization_type}", fontsize=14, pad=15)
-    ax.set_xlabel("Azot Aplicat (kg/ha)", fontsize=10)
+    ax.set_xlabel("Azot aplicat (kg/ha)", fontsize=10)
     ax.set_ylabel("Producție (t/ha)", fontsize=10)
     
     # Clean up the spines (borders)
