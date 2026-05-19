@@ -45,7 +45,7 @@ def fit_all_curves(_raw_data):
 params = fit_all_curves(raw_data)
 
 # ── 2. HEADER ────────────────────────────────────────────────────────────────
-st.markdown("<h1 style='color: #2E7D32;'>Simulator de răspuns al producției de masă verde la fertilzant</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: #2E7D32;'>Simulator de răspuns al producției de masă verde la fertilizant</h1>", unsafe_allow_html=True)
 st.markdown("""
 <p style='font-size: 24px;'>Acest instrument utilizează <b>Ecuația Mitscherlich</b> pentru a modela producția de masă verde în funcție de aportul de azot.
 Alegeți varianta de fertilizare din stânga și ajustați parametrii pentru a vedea rezultatele.
